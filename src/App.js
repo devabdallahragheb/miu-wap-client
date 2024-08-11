@@ -2,7 +2,7 @@ import React from "react";
 export default function App() {
   return (
     <h1  className="text-red-700">
-      Hello world! abdullah
+      Hello world! abdullah ragheb
     </h1>
   )
 }

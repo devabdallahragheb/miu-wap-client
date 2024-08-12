@@ -1,18 +1,23 @@
 import { React, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
+import {
+  signInStart,
+  signInSuccess,
+  signInFailure,
+} from "../redux/user/userSlice";
 export default function Signin() {
   const [formData, setFormData] = useState({});
-  const [error , setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const { loading, error } = useSelector((state) => state.user);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      setLoading(true);
+      dispatch(signInStart());
       const res = await fetch("/api/signin", {
         method: "POST",
         headers: {
@@ -25,21 +30,17 @@ export default function Signin() {
       console.log(JSON.stringify(data));
 
       if (data?.success === false) {
-        alert(data.message);
-        setLoading(false);
-        setError(data.message);
+        dispatch(signInFailure(data.message));
+  
         return;
       } else {
-        setLoading(true);
-        console.log(data);
-        setError(null);
+    
+        dispatch(signInSuccess(data));
         navigate("/");
       }
-    } catch (error) {
-      alert(error);
-      setError(JSON.stringify(message));
-      setLoading(false);
-      console.error("There was a problem with the fetch operation:", loading);
+    } catch (err) {
+      dispatch(signInFailure(err.message));
+ 
     }
   };
   return (
@@ -74,7 +75,6 @@ export default function Signin() {
         </Link>
       </div>
       <div> {error && <p className="text-red-500 mt-5">{error}</p>}</div>
-     
     </div>
   );
 }

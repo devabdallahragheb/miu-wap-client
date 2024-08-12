@@ -34,7 +34,7 @@ export default function Signin() {
   
         return;
       } else {
-    
+        alert(JSON.stringify(data))
         dispatch(signInSuccess(data));
         navigate("/");
       }

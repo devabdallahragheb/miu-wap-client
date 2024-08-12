@@ -31,23 +31,16 @@ export default function Signin() {
 
       if (data?.success === false) {
         dispatch(signInFailure(data.message));
-        // alert(data.message);
-        // setLoading(false);
-        // setError(data.message);
+  
         return;
       } else {
-        // setLoading(true);
-        // console.log(data);
-        // setError(null);
+    
         dispatch(signInSuccess(data));
         navigate("/");
       }
     } catch (err) {
       dispatch(signInFailure(err.message));
-      // alert(error);
-      // setError(JSON.stringify(message));
-      // setLoading(false);
-      // console.error("There was a problem with the fetch operation:", loading);
+ 
     }
   };
   return (

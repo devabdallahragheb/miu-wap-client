@@ -27,6 +27,7 @@ export default function QAuth() {
           email: result.user.email,
         }),
       });
+console.log(result.user.displayName,result.user.photoURL, result.user.email);
 
       const data = await res.json();
       dispatch(signInSuccess(data));
@@ -39,6 +40,7 @@ export default function QAuth() {
     <div>
       <button
         onClick={handleGoogleClick}
+        type="button"
         className="bg-red-700 text-white p-3 rounded-lg uppercase hover:opacity-95"
       >
         {" "}

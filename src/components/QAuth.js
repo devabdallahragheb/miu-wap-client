@@ -2,6 +2,7 @@ import React from "react";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { app } from "../firebase";
 import { useDispatch } from "react-redux";
+import {   useNavigate } from "react-router-dom";
 import {
   signInStart,
   signInSuccess,
@@ -9,6 +10,7 @@ import {
 } from "../redux/user/userSlice";
 export default function QAuth() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleGoogleClick = async () => {
     try {
       const provider = new GoogleAuthProvider();
@@ -27,11 +29,10 @@ export default function QAuth() {
           email: result.user.email,
         }),
       });
-console.log(result.user.displayName,result.user.photoURL, result.user.email);
 
       const data = await res.json();
       dispatch(signInSuccess(data));
-      console.log(data);
+      navigate("/");
     } catch (error) {
       console.log(error);
     }

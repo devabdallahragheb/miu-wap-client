@@ -6,6 +6,7 @@ import {
   signInSuccess,
   signInFailure,
 } from "../redux/user/userSlice";
+import QAuth from "../components/QAuth";
 export default function Signin() {
   const [formData, setFormData] = useState({});
   const { loading, error } = useSelector((state) => state.user);
@@ -67,6 +68,7 @@ export default function Signin() {
         >
           {loading ? "Loading..." : "Sign In"}
         </button>
+        <QAuth></QAuth>
       </form>
       <div className="flex gap-2 mt-5">
         <p> Dont Have an account ?</p>

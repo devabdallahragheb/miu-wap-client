@@ -2,7 +2,7 @@ import React from "react";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { app } from "../firebase";
 import { useDispatch } from "react-redux";
-import {   useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   signInStart,
   signInSuccess,
@@ -42,10 +42,9 @@ export default function QAuth() {
       <button
         onClick={handleGoogleClick}
         type="button"
-        className="bg-red-700 text-white p-3 rounded-lg uppercase hover:opacity-95"
+        className="bg-red-800  text-white p-3 rounded-lg   uppercase hover:opacity-95 text-center"
       >
-        {" "}
-        Containue With Google
+        Containue Wit Google
       </button>
     </div>
   );

@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/miu-wap-client/static/css/main.04848bf2.css",
+    "main.js": "/miu-wap-client/static/js/main.d34a2295.js",
+    "index.html": "/miu-wap-client/index.html",
+    "main.04848bf2.css.map": "/miu-wap-client/static/css/main.04848bf2.css.map",
+    "main.d34a2295.js.map": "/miu-wap-client/static/js/main.d34a2295.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.04848bf2.css",
+    "static/js/main.d34a2295.js"
+  ]
+}

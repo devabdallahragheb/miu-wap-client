@@ -1,9 +1,9 @@
 {
   "homepage": "https://devabdallahragheb.github.io/miu-wap-client",
-  "name": "client1",
+  "name": "miu-wap-client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://3.84.218.141:5000",
+  "proxy": "http://18.208.215.67:5000",
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
     "@testing-library/jest-dom": "^5.17.0",

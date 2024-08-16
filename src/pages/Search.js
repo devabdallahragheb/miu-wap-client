@@ -14,6 +14,7 @@ export default function Search() {
     sort: 'created_at',
     order: 'desc',
   });
+  const BASEURL = process.env.REACT_APP_BASEURL;
 
   const [loading, setLoading] = useState(false);
   const [listings, setListings] = useState([]);
@@ -53,7 +54,7 @@ export default function Search() {
       setLoading(true);
       setShowMore(false);
       const searchQuery = urlParams.toString();
-      const res = await fetch(`/api/home?${searchQuery}`);
+      const res = await fetch(BASEURL+`/api/home?${searchQuery}`);
       const data = await res.json();
       if (data.length > 8) {
         setShowMore(true);
@@ -121,7 +122,7 @@ export default function Search() {
     const urlParams = new URLSearchParams(location.search);
     urlParams.set('startIndex', startIndex);
     const searchQuery = urlParams.toString();
-    const res = await fetch(`/api/home?${searchQuery}`);
+    const res = await fetch(BASEURL+`/api/home?${searchQuery}`);
     const data = await res.json();
     if (data.length < 9) {
       setShowMore(false);

@@ -10,6 +10,8 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 export default function CreateListing() {
+   const BASEURL = process.env.REACT_APP_BASEURL;
+
   const { currentUser } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const [files, setFiles] = useState([]);
@@ -132,7 +134,7 @@ export default function CreateListing() {
         return setError('Discount price must be lower than regular price');
       setLoading(true);
       setError(false);
-      const res = await fetch('/api/home', {
+      const res = await fetch(BASEURL+'/api/home', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

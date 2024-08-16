@@ -9,6 +9,9 @@ import {
 import OAuth from '../components/QAuth';
 
 export default function SignIn() {
+
+  const BASEURL = process.env.REACT_APP_BASEURL;
+
   const [formData, setFormData] = useState({});
   const { loading, error } = useSelector((state) => state.user);
   const navigate = useNavigate();
@@ -23,7 +26,9 @@ export default function SignIn() {
     e.preventDefault();
     try {
       dispatch(signInStart());
-      const res = await fetch('/api/auth/signin', {
+      console.log(BASEURL);
+      
+      const res = await fetch(BASEURL+'/api/auth/signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -7,12 +7,11 @@ export default function Contact({ listing }) {
   const onChange = (e) => {
     setMessage(e.target.value);
   };
-
+  const BASEURL = process.env.REACT_APP_BASEURL;
   useEffect(() => {
     const fetchLandlord = async () => {
-      alert(listing.userRef);
       try {
-        const res = await fetch(`/api/users/${listing.userRef}`);
+        const res = await fetch(BASEURL+`/api/users/${listing.userRef}`);
 
         const data = await res.json();
         setLandlord(data);

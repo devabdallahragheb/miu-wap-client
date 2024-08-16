@@ -11,6 +11,8 @@ import {
 export default function QAuth() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const BASEURL = process.env.REACT_APP_BASEURL;
+
   const handleGoogleClick = async () => {
     try {
       const provider = new GoogleAuthProvider();
@@ -18,7 +20,7 @@ export default function QAuth() {
       const result = await signInWithPopup(auth, provider);
 
       console.log(result);
-      const res = await fetch("/api/auth/google", {
+      const res = await fetch(BASEURL+"/api/auth/google", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

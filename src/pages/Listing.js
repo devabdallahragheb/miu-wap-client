@@ -27,12 +27,13 @@ export default function Listing() {
   const [contact, setContact] = useState(false);
   const params = useParams();
   const { currentUser } = useSelector((state) => state.user);
+  const BASEURL = process.env.REACT_APP_BASEURL;
 
   useEffect(() => {
     const fetchListing = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`/api/home/${params.listingId}`);
+        const res = await fetch(BASEURL+`/api/home/${params.listingId}`);
         const data = await res.json();
         if (data.success === false) {
           setError(true);

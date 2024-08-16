@@ -29,6 +29,7 @@ export default function Profile() {
   const [showListingsError, setShowListingsError] = useState(false);
   const [userListings, setUserListings] = useState([]);
   const dispatch = useDispatch();
+  const BASEURL = process.env.REACT_APP_BASEURL;
 
   // firebase storage
   // allow read;
@@ -75,7 +76,7 @@ export default function Profile() {
     e.preventDefault();
     try {
       dispatch(updateUserStart());
-      const res = await fetch(`/api/users/${currentUser._id}`, {
+      const res = await fetch(BASEURL+`/api/users/${currentUser._id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -98,7 +99,7 @@ export default function Profile() {
   const handleDeleteUser = async () => {
     try {
       dispatch(deleteUserStart());
-      const res = await fetch(`/api/users/${currentUser._id}`, {
+      const res = await fetch(BASEURL+`/api/users/${currentUser._id}`, {
         method: "DELETE",
       });
       const data = await res.json();
@@ -115,7 +116,7 @@ export default function Profile() {
   const handleSignOut = async () => {
     try {
       dispatch(signOutUserStart());
-      const res = await fetch("/api/auth/signout");
+      const res = await fetch(BASEURL+"/api/auth/signout");
       const data = await res.json();
       if (data.success === false) {
         dispatch(deleteUserFailure(data.message));
@@ -130,7 +131,7 @@ export default function Profile() {
   const handleShowListings = async () => {
     try {
       setShowListingsError(false);
-      const res = await fetch(`/api/users/homes/${currentUser._id}`);
+      const res = await fetch(BASEURL+`/api/users/homes/${currentUser._id}`);
       const data = await res.json();
       if (data.success === false) {
         setShowListingsError(true);
@@ -145,7 +146,7 @@ export default function Profile() {
 
   const handleListingDelete = async (listingId) => {
     try {
-      const res = await fetch(`/api/home/${listingId}`, {
+      const res = await fetch(BASEURL+`/api/home/${listingId}`, {
         method: "DELETE",
       });
       const data = await res.json();
